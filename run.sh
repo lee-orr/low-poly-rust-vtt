@@ -1,4 +1,4 @@
-if ! trunk -v trunk &> /dev/null
+if ! command -v trunk &> /dev/null
 then
     echo "trunk doesn't exist"
     sudo apt-get update

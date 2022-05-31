@@ -382,7 +382,9 @@ dependencies = [
  "bevy_asset_loader",
  "bevy_kira_audio",
  "embed-resource",
+ "gloo-events",
  "rand",
+ "web-sys",
  "winit 0.25.0",
 ]
 
@@ -1533,6 +1535,16 @@ name = "glob"
 version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9b919933a397b79c37e33b77bb2aa3dc8eb6e165ad809e58ff75bc7db2e34574"
+
+[[package]]
+name = "gloo-events"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "68b107f8abed8105e4182de63845afcc7b69c098b7852a813ea7462a320992fc"
+dependencies = [
+ "wasm-bindgen",
+ "web-sys",
+]
 
 [[package]]
 name = "glow"
