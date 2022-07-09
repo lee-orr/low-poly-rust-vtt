@@ -14,7 +14,7 @@ fn main() {
         app.insert_resource(WindowDescriptor {
             width: 800.,
             height: 600.,
-            title: "Bevy game".to_string(), // ToDo
+            title: "Low Poly VTT".to_string(), // ToDo
             ..Default::default()
         });
 

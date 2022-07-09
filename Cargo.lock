@@ -419,21 +419,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "bevy_game"
-version = "0.1.0"
-dependencies = [
- "bevy",
- "bevy_asset_loader",
- "bevy_egui",
- "bevy_kira_audio",
- "embed-resource",
- "gloo-events",
- "rand",
- "web-sys",
- "winit 0.25.0",
-]
-
-[[package]]
 name = "bevy_gltf"
 version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2015,6 +2000,21 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "abb12e687cfb44aa40f41fc3978ef76448f9b6038cad6aef4259d3c095a2382e"
 dependencies = [
  "cfg-if 1.0.0",
+]
+
+[[package]]
+name = "low-poly-vtt"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "bevy_asset_loader",
+ "bevy_egui",
+ "bevy_kira_audio",
+ "embed-resource",
+ "gloo-events",
+ "rand",
+ "web-sys",
+ "winit 0.25.0",
 ]
 
 [[package]]

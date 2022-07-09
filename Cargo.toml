@@ -1,8 +1,8 @@
 [package]
-name = "bevy_game" # ToDo
+name = "low-poly-vtt" 
 version = "0.1.0"
 publish = false
-authors = ["Niklas Eicker <git@nikl.me>"] # ToDo: you are the author ;)
+authors = ["Lee-Orr"]
 edition = "2021"
 
 [profile.dev.package."*"]

@@ -5,17 +5,17 @@
         <key>CFBundleDevelopmentRegion</key>
         <string>en</string>
         <key>CFBundleDisplayName</key>
-        <string>BevyGame</string> <!-- ToDo: this should be the same as your OSX app name in the release flow -->
+        <string>LowPolyVtt</string> <!-- ToDo: this should be the same as your OSX app name in the release flow -->
         <key>CFBundleExecutable</key>
-        <string>bevy_game</string> <!-- ToDo: this should be the same as your executable name in the release flow -->
+        <string>low_poly_vtt</string> <!-- ToDo: this should be the same as your executable name in the release flow -->
         <key>CFBundleIconFile</key>
         <string>AppIcon.icns</string>
         <key>CFBundleIdentifier</key>
-        <string>your.domain.bevy-game</string> <!-- ToDo -->
+        <string>com.lee-orr.low-poly-vtt</string> <!-- ToDo -->
         <key>CFBundleInfoDictionaryVersion</key>
         <string>6.0</string>
         <key>CFBundleName</key>
-        <string>Bevy Game</string> <!-- ToDo -->
+        <string>Low Poly VTT</string> <!-- ToDo -->
         <key>CFBundlePackageType</key>
         <string>APPL</string>
         <key>CFBundleShortVersionString</key>
