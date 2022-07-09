@@ -2003,7 +2003,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "low-poly-vtt"
+name = "low_poly_vtt"
 version = "0.1.0"
 dependencies = [
  "bevy",

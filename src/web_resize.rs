@@ -1,5 +1,4 @@
 use bevy::prelude::*;
-use std::sync::Mutex;
 
 pub struct FullViewportPlugin;
 
@@ -7,16 +6,17 @@ impl Plugin for FullViewportPlugin {
     fn build(&self, app: &mut App) {
         #[cfg(target_family = "wasm")]
         {
-            let channel = std::sync::mpsc::channel();
-            let resize_sender: resize_functions::OnResizeSender = channel.0;
-            let resize_receiver: resize_functions::OnResizeReceiver = channel.1;
-
-            app.insert_resource(Mutex::new(resize_sender))
-                .insert_resource(Mutex::new(resize_receiver))
-                .add_startup_system(resize_functions::setup_viewport_resize_system)
-                .add_system(resize_functions::viewport_resize_system);
+            resize_functions::setup_plugin(app);
+        }
+        #[cfg(not(target_family = "wasm"))]
+        {
+            setup_empty_plugin(app);
         }
     }
+}
+
+fn setup_empty_plugin(_: &mut App) {
+    println!("Resize Plugin Unneeded");
 }
 
 #[cfg(target_family = "wasm")]
@@ -27,6 +27,17 @@ mod resize_functions {
 
     pub type OnResizeSender = Sender<()>;
     pub type OnResizeReceiver = Receiver<()>;
+
+    pub fn setup_plugin(app: &mut App) {
+        let channel = std::sync::mpsc::channel();
+        let resize_sender: OnResizeSender = channel.0;
+        let resize_receiver: OnResizeReceiver = channel.1;
+
+        app.insert_resource(Mutex::new(resize_sender))
+            .insert_resource(Mutex::new(resize_receiver))
+            .add_startup_system(setup_viewport_resize_system)
+            .add_system(viewport_resize_system);
+    }
     pub fn get_viewport_size() -> (f32, f32) {
         let web_window = web_sys::window().expect("could not get window");
         let document_element = web_window
