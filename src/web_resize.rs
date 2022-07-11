@@ -15,6 +15,7 @@ impl Plugin for FullViewportPlugin {
     }
 }
 
+#[allow(dead_code)]
 fn setup_empty_plugin(_: &mut App) {
     println!("Resize Plugin Unneeded");
 }
