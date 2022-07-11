@@ -2,4 +2,5 @@
 FROM gitpod/workspace-full
 
 # Install custom tools, runtime, etc.
-RUN ./setup.sh
+RUN rustup target add wasm32-unknown-unknown
+RUN cargo install trunk
