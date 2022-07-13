@@ -1,8 +1,10 @@
 mod actions;
 mod audio;
+mod connection;
 mod loading;
 mod menu;
 mod player;
+mod room_info;
 mod settings;
 pub mod web_resize;
 
@@ -18,6 +20,7 @@ use bevy::app::App;
 #[cfg(debug_assertions)]
 use bevy::diagnostic::{FrameTimeDiagnosticsPlugin, LogDiagnosticsPlugin};
 use bevy::prelude::*;
+use connection::ConnectionPlugin;
 
 // This example game uses States to separate logic
 // See https://bevy-cheatbook.github.io/programming/states.html
@@ -42,7 +45,8 @@ impl Plugin for GamePlugin {
             .add_plugin(ActionsPlugin)
             .add_plugin(InternalAudioPlugin)
             .add_plugin(PlayerPlugin)
-            .add_plugin(FullViewportPlugin);
+            .add_plugin(FullViewportPlugin)
+            .add_plugin(ConnectionPlugin);
 
         #[cfg(debug_assertions)]
         {

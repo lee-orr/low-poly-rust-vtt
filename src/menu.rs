@@ -1,4 +1,4 @@
-use crate::GameState;
+use crate::{room_info::RoomInfo, GameState};
 use bevy::prelude::*;
 use bevy_egui::{
     egui::{self, FontId, RichText},
@@ -35,6 +35,7 @@ fn menu(
     mut egui_context: ResMut<EguiContext>,
     mut menu_state: ResMut<MainMenuState>,
     mut state: ResMut<State<GameState>>,
+    mut commands: Commands,
 ) {
     egui::panel::CentralPanel::default().show(egui_context.ctx_mut(), |ui| {
         ui.with_layout(egui::Layout::left_to_right(), |ui| {
@@ -52,6 +53,7 @@ fn menu(
                     ))
                     .clicked()
                 {
+                    commands.insert_resource(RoomInfo::new(&menu_state.game_id));
                     let _ = state.set(GameState::Playing);
                 }
             });

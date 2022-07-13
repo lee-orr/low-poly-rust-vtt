@@ -11,8 +11,7 @@ pub struct LoadingPlugin;
 /// If interested, take a look at https://bevy-cheatbook.github.io/features/assets.html
 impl Plugin for LoadingPlugin {
     fn build(&self, app: &mut App) {
-        let mut app = app
-            .add_plugin(JsonAssetPlugin::<Settings>::new(&["json", "custom"]));
+        let app = app.add_plugin(JsonAssetPlugin::<Settings>::new(&["json", "custom"]));
 
         AssetLoader::new(GameState::Loading)
             .with_collection::<FontAssets>()
