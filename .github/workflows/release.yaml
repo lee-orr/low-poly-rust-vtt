@@ -28,6 +28,9 @@ jobs:
       - name: Remove build script
         run: |
           rm build.rs
+      - name: Add Settings file
+        run: |
+          echo "{\"signaling_url\":\"match.gschup.dev/bevy\"}" > ./assets/settings.json 
       - name: Build release
         run: |
           cargo build --release
@@ -64,6 +67,9 @@ jobs:
         with:
           toolchain: stable
           override: true
+      - name: Add Settings file
+        run: |
+          echo "{\"signaling_url\":\"match.gschup.dev/bevy\"}" > ./assets/settings.json 
       - name: Install Dependencies
         run: sudo apt-get update; sudo apt-get install pkg-config libx11-dev libasound2-dev libudev-dev
       - name: Build release
@@ -100,6 +106,9 @@ jobs:
         with:
           toolchain: stable
           override: true
+      - name: Add Settings file
+        run: |
+          echo "{\"signaling_url\":\"match.gschup.dev/bevy\"}" > ./assets/settings.json 
       - name: Build release
         run: |
           cargo build --release
@@ -135,6 +144,9 @@ jobs:
         with:
           toolchain: stable
           override: true
+      - name: Add Settings file
+        run: |
+          echo "{\"signaling_url\":\"match.gschup.dev/bevy\"}" > ./assets/settings.json 
       - name: Install Dependencies
         run: sudo apt-get update; sudo apt-get install pkg-config libx11-dev libasound2-dev libudev-dev
       - name: Install trunk

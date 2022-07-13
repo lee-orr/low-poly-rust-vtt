@@ -24,6 +24,9 @@ jobs:
       - name: Add wasm target
         run: |
           rustup target add wasm32-unknown-unknown
+      - name: Add Settings file
+        run: |
+          echo "{\"signaling_url\":\"match.gschup.dev/bevy\"}" > ./assets/settings.json 
       - name: Build Release
         run: |
           trunk build --release --public-url "${GITHUB_REPOSITORY#*/}"
