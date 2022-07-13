@@ -1,6 +1,7 @@
-use crate::GameState;
+use crate::{settings::Settings, GameState};
 use bevy::prelude::*;
 use bevy_asset_loader::{AssetCollection, AssetLoader};
+use bevy_common_assets::json::JsonAssetPlugin;
 use bevy_kira_audio::AudioSource;
 
 pub struct LoadingPlugin;
@@ -10,10 +11,14 @@ pub struct LoadingPlugin;
 /// If interested, take a look at https://bevy-cheatbook.github.io/features/assets.html
 impl Plugin for LoadingPlugin {
     fn build(&self, app: &mut App) {
+        let mut app = app
+            .add_plugin(JsonAssetPlugin::<Settings>::new(&["json", "custom"]));
+
         AssetLoader::new(GameState::Loading)
             .with_collection::<FontAssets>()
             .with_collection::<AudioAssets>()
             .with_collection::<TextureAssets>()
+            .with_collection::<SettingsAssets>()
             .continue_to_state(GameState::Menu)
             .build(app);
     }
@@ -38,4 +43,10 @@ pub struct AudioAssets {
 pub struct TextureAssets {
     #[asset(path = "textures/bevy.png")]
     pub texture_bevy: Handle<Image>,
+}
+
+#[derive(AssetCollection)]
+pub struct SettingsAssets {
+    #[asset(path = "settings.json")]
+    pub settings: Handle<Settings>,
 }

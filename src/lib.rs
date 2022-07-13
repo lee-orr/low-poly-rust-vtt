@@ -3,6 +3,7 @@ mod audio;
 mod loading;
 mod menu;
 mod player;
+mod settings;
 pub mod web_resize;
 
 use crate::actions::ActionsPlugin;
