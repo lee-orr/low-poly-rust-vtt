@@ -1,15 +1,5 @@
-use crate::loading::FontAssets;
 use crate::GameState;
-use bevy::{
-    ecs::system::Insert,
-    math::{Rect, Size},
-    prelude::*,
-    ui::{
-        entity::*,
-        Style,
-        Val::{Percent, Px},
-    },
-};
+use bevy::prelude::*;
 use bevy_egui::{
     egui::{self, FontId, RichText},
     EguiContext, EguiPlugin,
@@ -19,7 +9,7 @@ pub struct MenuPlugin;
 
 #[derive(Default)]
 pub struct MainMenuState {
-    game_id: String
+    game_id: String,
 }
 
 /// This plugin is responsible for the game menu (containing only one button...)
@@ -41,21 +31,30 @@ fn clear_menu_state(mut commands: Commands) {
     commands.remove_resource::<MainMenuState>()
 }
 
-fn menu(mut egui_context: ResMut<EguiContext>, mut menu_state: ResMut<MainMenuState>, mut state: ResMut<State<GameState>>) {
+fn menu(
+    mut egui_context: ResMut<EguiContext>,
+    mut menu_state: ResMut<MainMenuState>,
+    mut state: ResMut<State<GameState>>,
+) {
     egui::panel::CentralPanel::default().show(egui_context.ctx_mut(), |ui| {
         ui.with_layout(egui::Layout::left_to_right(), |ui| {
-        ui.with_layout(
-            egui::Layout::top_down(egui::Align::Center),
-            |ui| {
+            ui.with_layout(egui::Layout::top_down(egui::Align::Center), |ui| {
                 ui.label(RichText::new("VTT Menu").font(FontId::proportional(90.0)));
                 ui.add_space(10.0);
-                egui::TextEdit::singleline(&mut menu_state.game_id).font(FontId::proportional(50.0)).margin([10.0,10.0].into()).show(ui);
+                egui::TextEdit::singleline(&mut menu_state.game_id)
+                    .font(FontId::proportional(50.0))
+                    .margin([10.0, 10.0].into())
+                    .show(ui);
                 ui.add_space(10.0);
-                if ui.add(egui::Button::new(RichText::new("Start Game").font(FontId::proportional(50.0)))).clicked() {
+                if ui
+                    .add(egui::Button::new(
+                        RichText::new("Start Game").font(FontId::proportional(50.0)),
+                    ))
+                    .clicked()
+                {
                     let _ = state.set(GameState::Playing);
                 }
-            }
-        );
-    });
+            });
+        });
     });
 }

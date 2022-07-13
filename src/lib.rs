@@ -10,14 +10,13 @@ use crate::audio::InternalAudioPlugin;
 use crate::loading::LoadingPlugin;
 use crate::menu::MenuPlugin;
 use crate::player::PlayerPlugin;
-use matchbox_socket::WebRtcNonBlockingSocket;
 
 use crate::web_resize::FullViewportPlugin;
 
+use bevy::app::App;
 #[cfg(debug_assertions)]
 use bevy::diagnostic::{FrameTimeDiagnosticsPlugin, LogDiagnosticsPlugin};
 use bevy::prelude::*;
-use bevy::{app::App, tasks::IoTaskPool};
 
 // This example game uses States to separate logic
 // See https://bevy-cheatbook.github.io/programming/states.html
