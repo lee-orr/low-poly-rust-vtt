@@ -14,10 +14,10 @@ use matchbox_socket::WebRtcNonBlockingSocket;
 
 use crate::web_resize::FullViewportPlugin;
 
-use bevy::{app::App, tasks::IoTaskPool};
 #[cfg(debug_assertions)]
 use bevy::diagnostic::{FrameTimeDiagnosticsPlugin, LogDiagnosticsPlugin};
 use bevy::prelude::*;
+use bevy::{app::App, tasks::IoTaskPool};
 
 // This example game uses States to separate logic
 // See https://bevy-cheatbook.github.io/programming/states.html
@@ -52,10 +52,8 @@ impl Plugin for GamePlugin {
     }
 }
 
-
-
 // fn start_matchbox_socket(mut commands: Commands, task_pool: Res<IoTaskPool>) {
-//     let host = 
+//     let host =
 //         web_sys::window()
 //         .unwrap()
 //         .location()
