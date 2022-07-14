@@ -3,7 +3,7 @@
 
 use bevy::prelude::{App, ClearColor, Color, Msaa, WindowDescriptor};
 use bevy::DefaultPlugins;
-use low_poly_vtt::GamePlugin;
+use low_poly_vtt::client_lib::GamePlugin;
 
 fn main() {
     let mut app = App::new();

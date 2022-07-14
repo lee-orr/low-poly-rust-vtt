@@ -1,4 +1,4 @@
-use crate::{room_info::RoomInfo, GameState};
+use crate::client_lib::{room_info::RoomInfo, GameState};
 use bevy::prelude::*;
 use bevy_egui::{
     egui::{self, FontId, RichText},

@@ -1,4 +1,4 @@
-use crate::{settings::Settings, GameState};
+use crate::client_lib::{settings::Settings, GameState};
 use bevy::prelude::*;
 use bevy_asset_loader::{AssetCollection, AssetLoader};
 use bevy_common_assets::json::JsonAssetPlugin;
@@ -14,7 +14,6 @@ impl Plugin for LoadingPlugin {
         let app = app.add_plugin(JsonAssetPlugin::<Settings>::new(&["json", "custom"]));
 
         AssetLoader::new(GameState::Loading)
-            .with_collection::<FontAssets>()
             .with_collection::<AudioAssets>()
             .with_collection::<TextureAssets>()
             .with_collection::<SettingsAssets>()
@@ -25,12 +24,6 @@ impl Plugin for LoadingPlugin {
 
 // the following asset collections will be loaded during the State `GameState::Loading`
 // when done loading, they will be inserted as resources (see https://github.com/NiklasEi/bevy_asset_loader)
-
-#[derive(AssetCollection)]
-pub struct FontAssets {
-    #[asset(path = "fonts/FiraSans-Bold.ttf")]
-    pub fira_sans: Handle<Font>,
-}
 
 #[derive(AssetCollection)]
 pub struct AudioAssets {
