@@ -1,6 +1,8 @@
-use bevy::{prelude::*};
+use bevy::prelude::*;
 
-use crate::client_lib::{loading::SettingsAssets, room_info::RoomInfo, settings::Settings, GameState};
+use crate::client_lib::{
+    loading::SettingsAssets, room_info::RoomInfo, settings::Settings, GameState,
+};
 
 pub struct ConnectionPlugin;
 
