@@ -47,6 +47,7 @@ bytemuck = { version = "1.7", features=["derive"]}
 clap = { version = "3.0", features = ["derive"] }
 serde = "1.0"
 bevy_common_assets = { version = "0.2.0", features = ["json"]}
+uuid = { version = "1.0", features = ["serde", "v4"] }
 
 [target.'cfg(target_family = "wasm")'.dependencies]
 web-sys = { version = "0.3.57", features = ["Element", "Document", "Window", "Location"]}
@@ -57,6 +58,10 @@ gloo-events = "0.1.2"
 
 
 [target.'cfg(not(target_family = "wasm"))'.dependencies]
+warp = "0.3.1"
+tokio = { version = "1.10", features = ["macros", "rt-multi-thread"] }
+futures = { version = "0.3", default-features = false, features = ["alloc"] }
+tokio-stream = "0.1"
 
 
 [target.'cfg(target_os = "linux")'.dependencies]

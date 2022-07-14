@@ -10,9 +10,8 @@ use bevy::DefaultPlugins;
 #[cfg(feature = "client")]
 use low_poly_vtt::client_lib::GamePlugin;
 
+#[cfg(feature = "client")]
 fn main() {
-    #[cfg(feature = "client")]
-    {
         let mut app = App::new();
         app.insert_resource(Msaa { samples: 1 })
             .insert_resource(ClearColor(Color::rgb(0.4, 0.4, 0.4)))
@@ -26,11 +25,12 @@ fn main() {
         });
 
         app.run();
-    }
+}
 
-    #[cfg(all(feature = "server", not(feature = "client")))]
-    {
-        // HOST SERVER HERE
-        println!("STARTING HOST!")
-    }
+#[cfg(all(feature = "server", not(feature = "client")))]
+#[tokio::main]
+async fn main()
+{
+    // HOST SERVER HERE
+    println!("STARTING HOST!")
 }
