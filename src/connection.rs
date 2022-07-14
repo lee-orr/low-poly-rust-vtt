@@ -1,4 +1,4 @@
-use bevy::{asset::Asset, prelude::*, tasks::IoTaskPool};
+use bevy::{prelude::*, tasks::IoTaskPool};
 use matchbox_socket::WebRtcNonBlockingSocket;
 
 use crate::{loading::SettingsAssets, room_info::RoomInfo, settings::Settings, GameState};
