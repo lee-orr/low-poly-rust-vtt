@@ -27,9 +27,13 @@ fn main() {
     app.run();
 }
 
+
+#[cfg(all(feature = "server", not(feature = "client")))]
+use low_poly_vtt::server_lib::dedicated_server_start;
+
 #[cfg(all(feature = "server", not(feature = "client")))]
 #[tokio::main]
 async fn main() {
     // HOST SERVER HERE
-    println!("STARTING HOST!")
+    dedicated_server_start().await;
 }
