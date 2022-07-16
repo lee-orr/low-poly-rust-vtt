@@ -3,7 +3,7 @@ image:
   file: gitpod.Dockerfile
 
 tasks:
-  - init: cargo build && cargo build --target wasm32-unknown-unknown
+  - init: cargo build --no-default-features --features server && cargo build --target wasm32-unknown-unknown
   - command: ./run.sh
 
 github:
