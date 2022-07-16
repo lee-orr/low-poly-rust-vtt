@@ -27,7 +27,6 @@ fn main() {
     app.run();
 }
 
-
 #[cfg(all(feature = "server", not(feature = "client")))]
 use low_poly_vtt::server_lib::dedicated_server_start;
 

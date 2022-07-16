@@ -28,12 +28,12 @@ pub async fn server_start(host: &SocketAddr) {
             Method::HEAD,
         ]);
 
-        let routes = health_route.with(cors).with(log);
+    let routes = health_route.with(cors).with(log);
 
-        warp::serve(routes).run(host.clone()).await;
+    warp::serve(routes).run(host.clone()).await;
 }
 
-async fn health_handler() -> std::result::Result<impl Reply, Rejection>{
+async fn health_handler() -> std::result::Result<impl Reply, Rejection> {
     println!("Health Check");
     Ok(StatusCode::OK)
 }
