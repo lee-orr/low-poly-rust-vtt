@@ -2,14 +2,14 @@ use im::Vector;
 use redux_rs::Store;
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Serialize, Deserialize)]
+#[derive(Clone, Serialize, Deserialize, Debug)]
 pub enum ChatMessage {
     System(String),
     Message(String, String),
     SecretMessage(Vec<String>, String),
 }
 
-#[derive(Default)]
+#[derive(Default, Debug)]
 pub struct Chat {
     pub messages: Vector<ChatMessage>,
 }
