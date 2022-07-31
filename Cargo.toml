@@ -51,6 +51,8 @@ im = "15.1.0"
 serde_json = "1.0"
 naia-bevy-client = "0.10.1"
 naia-bevy-shared = "0.10.1"
+naia-shared = "*"
+naia-client = "*"
 
 [target.'cfg(target_family = "wasm")'.dependencies]
 web-sys = { version = "0.3.57", features = ["Element", "Document", "Window", "Location"]}
@@ -59,6 +61,7 @@ gloo-events = "0.1.2"
 
 [target.'cfg(not(target_family = "wasm"))'.dependencies]
 naia-bevy-server = { version = "0.10.1", features = ["use-webrtc"] }
+naia-server = "*"
 
 
 [target.'cfg(target_os = "linux")'.dependencies]

@@ -1,8 +1,10 @@
 use im::Vector;
+use naia_shared::{derive_serde, serde};
 use redux_rs::Store;
-use serde::{Deserialize, Serialize};
+use ::serde::{Serialize, Deserialize};
 
-#[derive(Clone, Serialize, Deserialize, Debug)]
+#[derive(Debug, Serialize, Deserialize)]
+#[derive_serde]
 pub enum ChatMessage {
     System(String),
     Message(String, String),

@@ -1,5 +1,4 @@
 use clap::Parser;
-use std::net::SocketAddr;
 
 #[derive(Parser, Debug)]
 #[clap(
@@ -8,6 +7,10 @@ use std::net::SocketAddr;
     rename_all_env = "screaming-snake"
 )]
 pub struct Args {
-    #[clap(default_value = "0.0.0.0:7768")]
-    pub host: SocketAddr,
+    #[clap(long, default_value = "7767")]
+    pub port: u16,
+    #[clap(long, default_value = "7768")]
+    pub webrtc_port: u16,
+    #[clap(long, default_value = "http://127.0.0.1:7768")]
+    pub webrtc_url: String,
 }
