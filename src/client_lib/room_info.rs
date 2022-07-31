@@ -6,15 +6,11 @@ pub struct RoomInfo {
 
 impl RoomInfo {
     pub fn new(info: &str) -> Option<Self> {
-        if let Some(name) = extract_room_name(&info) {
-            Some(Self {
+        extract_room_name(info).map(|name| Self {
                 room_name: name,
-                url: extract_host_name(&info),
-                player: extract_player_name(&info),
+                url: extract_host_name(info),
+                player: extract_player_name(info),
             })
-        } else {
-            None
-        }
     }
 
     pub fn main_channel_name(&self) -> String {
@@ -24,11 +20,7 @@ impl RoomInfo {
 
 fn extract_room_name(info: &str) -> Option<String> {
     let split = info.split(&['/', '@']).collect::<Vec<&str>>();
-    if let Some(room_name) = split.into_iter().last() {
-        Some(room_name.to_owned())
-    } else {
-        None
-    }
+    split.into_iter().last().map(|room_name| room_name.to_owned())
 }
 
 fn extract_host_name(info: &str) -> Option<String> {

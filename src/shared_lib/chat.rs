@@ -43,7 +43,7 @@ fn reducer(state: Chat, action: ChatAction) -> Chat {
     match action {
         ChatAction::PostMessage(message) => Chat {
             messages: {
-                let mut messages = state.messages.clone();
+                let mut messages = state.messages;
                 messages.push_back(message);
                 messages
             },
