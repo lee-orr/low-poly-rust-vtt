@@ -78,7 +78,7 @@ mod test {
         if let ChatMessage::System(msg) = &chat.messages[0] {
             assert_eq!(msg, "System Message");
         } else {
-            assert!(false)
+            panic!()
         }
     }
 
@@ -95,7 +95,7 @@ mod test {
         if let ChatMessage::System(msg) = &chat.messages[1] {
             assert_eq!(msg, "System Message");
         } else {
-            assert!(false)
+            panic!()
         }
     }
 
@@ -114,7 +114,7 @@ mod test {
         if let ChatMessage::System(msg) = &result[0] {
             assert_eq!(msg, "A Message");
         } else {
-            assert!(false)
+            panic!()
         }
     }
 
@@ -133,12 +133,12 @@ mod test {
         if let ChatMessage::SecretMessage(_, msg) = &result[0] {
             assert_eq!(msg, "Test 1");
         } else {
-            assert!(false)
+            panic!()
         }
         if let ChatMessage::System(msg) = &result[1] {
             assert_eq!(msg, "A Message");
         } else {
-            assert!(false)
+            panic!()
         }
     }
 }

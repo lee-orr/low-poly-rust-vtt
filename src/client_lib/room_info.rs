@@ -7,10 +7,10 @@ pub struct RoomInfo {
 impl RoomInfo {
     pub fn new(info: &str) -> Option<Self> {
         extract_room_name(info).map(|name| Self {
-                room_name: name,
-                url: extract_host_name(info),
-                player: extract_player_name(info),
-            })
+            room_name: name,
+            url: extract_host_name(info),
+            player: extract_player_name(info),
+        })
     }
 
     pub fn main_channel_name(&self) -> String {
@@ -19,8 +19,11 @@ impl RoomInfo {
 }
 
 fn extract_room_name(info: &str) -> Option<String> {
-    let split = info.split(&['/', '@']).collect::<Vec<&str>>();
-    split.into_iter().last().map(|room_name| room_name.to_owned())
+    let split = info.split(&['/', '@']);
+    split
+        .into_iter()
+        .last()
+        .map(|room_name| room_name.to_owned())
 }
 
 fn extract_host_name(info: &str) -> Option<String> {
@@ -36,9 +39,7 @@ fn extract_host_name(info: &str) -> Option<String> {
 
 fn extract_player_name(info: &str) -> Option<String> {
     let split = info.split_inclusive(&['/', '@']).collect::<Vec<&str>>();
-    if split.len() == 2 && split[0].ends_with('@') {
-        Some(split[0].trim_end_matches('@').to_owned())
-    } else if split.len() == 3 {
+    if (split.len() == 2 || split.len() == 3) && split[0].ends_with('@') {
         Some(split[0].trim_end_matches('@').to_owned())
     } else {
         None
