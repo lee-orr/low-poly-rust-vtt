@@ -1,18 +1,20 @@
 pub struct RoomInfo {
     pub url: Option<String>,
     pub room_name: String,
-    pub player: Option<String>
+    pub player: Option<String>,
 }
 
 impl RoomInfo {
     pub fn new(info: &str) -> Option<Self> {
         if let Some(name) = extract_room_name(&info) {
-        Some(Self {
-            room_name: name,
-            url: extract_host_name(&info),
-            player: extract_player_name(&info),
-        })
-    } else { None }
+            Some(Self {
+                room_name: name,
+                url: extract_host_name(&info),
+                player: extract_player_name(&info),
+            })
+        } else {
+            None
+        }
     }
 
     pub fn main_channel_name(&self) -> String {
@@ -54,7 +56,7 @@ fn extract_player_name(info: &str) -> Option<String> {
 #[cfg(test)]
 mod test {
     use super::*;
-    
+
     #[test]
     fn extracts_room_name_from_str() {
         let room = RoomInfo::new("game_name").unwrap();

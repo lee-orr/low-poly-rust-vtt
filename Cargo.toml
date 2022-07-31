@@ -41,8 +41,6 @@ bevy_kira_audio = { version = "0.10" }
 bevy_asset_loader = { version = "0.11" }
 bevy_egui = { version = "0.14" }
 rand = "0.8.3"
-ggrs = "0.9.1"
-bevy_ggrs = "0.9"
 bytemuck = { version = "1.7", features=["derive"]}
 clap = { version = "3.0", features = ["derive"] }
 serde = "1.0"
@@ -51,19 +49,16 @@ uuid = { version = "1.0", features = ["serde", "v4"] }
 redux-rs = "0.3.3"
 im = "15.1.0"
 serde_json = "1.0"
+naia-bevy-client = "0.10.1"
+naia-bevy-shared = "0.10.1"
 
 [target.'cfg(target_family = "wasm")'.dependencies]
 web-sys = { version = "0.3.57", features = ["Element", "Document", "Window", "Location"]}
 wasm-bindgen = "0.2"
-ggrs = { version = "0.9.1", features = ["wasm-bindgen"] }
 gloo-events = "0.1.2"
 
-
 [target.'cfg(not(target_family = "wasm"))'.dependencies]
-warp = "0.3.1"
-tokio = { version = "1.10", features = ["macros", "rt-multi-thread"] }
-futures = { version = "0.3", default-features = false, features = ["alloc"] }
-tokio-stream = "0.1"
+naia-bevy-server = { version = "0.10.1", features = ["use-webrtc"] }
 
 
 [target.'cfg(target_os = "linux")'.dependencies]

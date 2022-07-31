@@ -10,29 +10,23 @@ use bevy::DefaultPlugins;
 #[cfg(feature = "client")]
 use low_poly_vtt::client_lib::GamePlugin;
 
-#[cfg(feature = "client")]
 fn main() {
     let mut app = App::new();
-    app.insert_resource(Msaa { samples: 1 })
-        .insert_resource(ClearColor(Color::rgb(0.4, 0.4, 0.4)))
-        .add_plugins(DefaultPlugins)
-        .add_plugin(GamePlugin);
-    app.insert_resource(WindowDescriptor {
-        width: 800.,
-        height: 600.,
-        title: "Low Poly VTT".to_string(), // ToDo
-        ..Default::default()
-    });
+
+    #[cfg(feature = "client")]
+    {
+        app = app
+            .insert_resource(Msaa { samples: 1 })
+            .insert_resource(ClearColor(Color::rgb(0.4, 0.4, 0.4)))
+            .add_plugins(DefaultPlugins)
+            .insert_resource(WindowDescriptor {
+                width: 800.,
+                height: 600.,
+                title: "Low Poly VTT".to_string(), // ToDo
+                ..Default::default()
+            });
+    }
+    app.add_plugin(GamePlugin);
 
     app.run();
-}
-
-#[cfg(all(feature = "server", not(feature = "client")))]
-use low_poly_vtt::server_lib::dedicated_server_start;
-
-#[cfg(all(feature = "server", not(feature = "client")))]
-#[tokio::main]
-async fn main() {
-    // HOST SERVER HERE
-    dedicated_server_start().await;
 }

@@ -1,2 +1,0 @@
-WS ws://localhost:7768/ws
-{"message":{"Chat":{"Message":["1","test"]}},"id":0}
