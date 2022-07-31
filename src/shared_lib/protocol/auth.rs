@@ -5,7 +5,7 @@ use naia_shared::{Property, Replicate};
 #[protocol_path = "crate::shared_lib::protocol::Protocol"]
 pub struct Auth {
     pub player: Property<String>,
-    pub game: Property<String>
+    pub game: Property<String>,
 }
 
 impl Auth {

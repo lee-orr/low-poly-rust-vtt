@@ -1,10 +1,10 @@
 // disable console on windows for release builds
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use bevy::{prelude::{App, ClearColor, Color, Msaa, WindowDescriptor}, log::LogSettings};
-
-#[cfg(feature = "client")]
-use bevy::DefaultPlugins;
+use bevy::{
+    log::LogSettings,
+    prelude::{App, ClearColor, Color, Msaa, WindowDescriptor},
+};
 
 #[cfg(feature = "client")]
 use low_poly_vtt::client_lib::ClientPlugin;
@@ -22,7 +22,6 @@ fn main() {
 
     #[cfg(not(feature = "client"))]
     {
-
         app.add_plugin(bevy::log::LogPlugin::default())
             .add_plugin(bevy::core::CorePlugin::default())
             .add_plugin(bevy::transform::TransformPlugin::default())

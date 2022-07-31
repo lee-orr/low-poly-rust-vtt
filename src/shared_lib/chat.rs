@@ -1,7 +1,7 @@
+use ::serde::{Deserialize, Serialize};
 use im::Vector;
 use naia_shared::{derive_serde, serde};
 use redux_rs::Store;
-use ::serde::{Serialize, Deserialize};
 
 #[derive(Debug, Serialize, Deserialize)]
 #[derive_serde]
