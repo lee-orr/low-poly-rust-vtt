@@ -53,8 +53,10 @@ fn menu(
                     ))
                     .clicked()
                 {
-                    commands.insert_resource(RoomInfo::new(&menu_state.game_id));
-                    let _ = state.set(GameState::Playing);
+                    if let Some(room) = RoomInfo::new(&menu_state.game_id) {
+                        commands.insert_resource(room);
+                        let _ = state.set(GameState::Playing);
+                    }
                 }
             });
         });
