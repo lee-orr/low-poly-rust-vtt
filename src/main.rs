@@ -6,7 +6,7 @@ use bevy::prelude::{App, ClearColor, Color, Msaa, WindowDescriptor};
 
 #[cfg(feature = "client")]
 use bevy::DefaultPlugins;
-\
+
 use low_poly_vtt::client_lib::GamePlugin;
 
 fn main() {
