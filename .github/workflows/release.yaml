@@ -106,6 +106,12 @@ jobs:
         with:
           toolchain: stable
           override: true
+      - name: Install OpenSSL on windows
+        run: echo "VCPKG_ROOT=$env:VCPKG_INSTALLATION_ROOT" | Out-File -FilePath $env:GITHUB_ENV -Append
+        if: runner.os == "windows"
+      - name: Install OpenSSL on windows step 2
+        run: vcpkg install openssl:x64-windows-static-md
+        if: runner.os == "windows"
       - name: Add Settings file
         run: |
           echo "{\"signaling_url\":\"match.gschup.dev/bevy\"}" > ./assets/settings.json 

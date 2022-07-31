@@ -28,6 +28,12 @@ jobs:
       - name: Install alsa and udev
         run: sudo apt-get update; sudo apt-get install --no-install-recommends libasound2-dev libudev-dev
         if: runner.os == 'linux'
+      - name: Install OpenSSL on windows
+        run: echo "VCPKG_ROOT=$env:VCPKG_INSTALLATION_ROOT" | Out-File -FilePath $env:GITHUB_ENV -Append
+        if: runner.os == "windows"
+      - name: Install OpenSSL on windows step 2
+        run: vcpkg install openssl:x64-windows-static-md
+        if: runner.os == "windows"
       - name: Build & run tests
         run: cargo test
   all-doc-tests:
