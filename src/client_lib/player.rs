@@ -1,6 +1,6 @@
 use crate::client_lib::actions::Actions;
 use crate::client_lib::loading::TextureAssets;
-use crate::client_lib::GameState;
+use crate::client_lib::client_state::ClientState;
 use bevy::prelude::*;
 
 pub struct PlayerPlugin;
@@ -13,11 +13,11 @@ pub struct Player;
 impl Plugin for PlayerPlugin {
     fn build(&self, app: &mut App) {
         app.add_system_set(
-            SystemSet::on_enter(GameState::Playing)
+            SystemSet::on_enter(ClientState::Playing)
                 .with_system(spawn_player)
                 .with_system(spawn_camera),
         )
-        .add_system_set(SystemSet::on_update(GameState::Playing).with_system(move_player));
+        .add_system_set(SystemSet::on_update(ClientState::Playing).with_system(move_player));
     }
 }
 

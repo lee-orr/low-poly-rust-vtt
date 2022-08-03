@@ -1,5 +1,6 @@
-use crate::client_lib::GameState;
 use bevy::prelude::*;
+
+use super::client_state::ClientState;
 
 pub struct ActionsPlugin;
 
@@ -8,7 +9,7 @@ pub struct ActionsPlugin;
 impl Plugin for ActionsPlugin {
     fn build(&self, app: &mut App) {
         app.init_resource::<Actions>().add_system_set(
-            SystemSet::on_update(GameState::Playing).with_system(set_movement_actions),
+            SystemSet::on_update(ClientState::Playing).with_system(set_movement_actions),
         );
     }
 }

@@ -1,4 +1,4 @@
-use crate::client_lib::{settings::Settings, GameState};
+use crate::client_lib::{settings::Settings, client_state::ClientState};
 use bevy::prelude::*;
 use bevy_asset_loader::{AssetCollection, AssetLoader};
 use bevy_common_assets::json::JsonAssetPlugin;
@@ -13,11 +13,11 @@ impl Plugin for LoadingPlugin {
     fn build(&self, app: &mut App) {
         let app = app.add_plugin(JsonAssetPlugin::<Settings>::new(&["json", "custom"]));
 
-        AssetLoader::new(GameState::Loading)
+        AssetLoader::new(ClientState::Loading)
             .with_collection::<AudioAssets>()
             .with_collection::<TextureAssets>()
             .with_collection::<SettingsAssets>()
-            .continue_to_state(GameState::Menu)
+            .continue_to_state(ClientState::Menu)
             .build(app);
     }
 }

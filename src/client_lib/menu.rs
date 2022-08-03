@@ -1,4 +1,4 @@
-use crate::client_lib::{room_info::RoomInfo, GameState};
+use crate::client_lib::{room_info::RoomInfo, client_state::ClientState};
 use bevy::prelude::*;
 use bevy_egui::{
     egui::{self, FontId, RichText},
@@ -17,9 +17,9 @@ pub struct MainMenuState {
 impl Plugin for MenuPlugin {
     fn build(&self, app: &mut App) {
         app.add_plugin(EguiPlugin)
-            .add_system_set(SystemSet::on_enter(GameState::Menu).with_system(setup_menu_state))
-            .add_system_set(SystemSet::on_exit(GameState::Menu).with_system(clear_menu_state))
-            .add_system_set(SystemSet::on_update(GameState::Menu).with_system(menu));
+            .add_system_set(SystemSet::on_enter(ClientState::Menu).with_system(setup_menu_state))
+            .add_system_set(SystemSet::on_exit(ClientState::Menu).with_system(clear_menu_state))
+            .add_system_set(SystemSet::on_update(ClientState::Menu).with_system(menu));
     }
 }
 
@@ -34,7 +34,7 @@ fn clear_menu_state(mut commands: Commands) {
 fn menu(
     mut egui_context: ResMut<EguiContext>,
     mut menu_state: ResMut<MainMenuState>,
-    mut state: ResMut<State<GameState>>,
+    mut state: ResMut<State<ClientState>>,
     mut commands: Commands,
 ) {
     egui::panel::CentralPanel::default().show(egui_context.ctx_mut(), |ui| {
@@ -55,7 +55,7 @@ fn menu(
                 {
                     if let Some(room) = RoomInfo::new(&menu_state.game_id) {
                         commands.insert_resource(room);
-                        let _ = state.set(GameState::Playing);
+                        let _ = state.set(ClientState::Playing);
                     }
                 }
             });
