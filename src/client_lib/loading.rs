@@ -1,4 +1,4 @@
-use crate::client_lib::{settings::Settings, client_state::ClientState};
+use crate::client_lib::{client_state::ClientState, settings::Settings};
 use bevy::prelude::*;
 use bevy_asset_loader::{AssetCollection, AssetLoader};
 use bevy_common_assets::json::JsonAssetPlugin;

@@ -3,7 +3,8 @@
 
 use bevy::{
     log::LogSettings,
-    prelude::{App, ClearColor, Color, Msaa, WindowDescriptor}, DefaultPlugins,
+    prelude::{App, ClearColor, Color, Msaa, WindowDescriptor},
+    DefaultPlugins,
 };
 
 #[cfg(feature = "client")]

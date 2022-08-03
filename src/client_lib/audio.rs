@@ -1,6 +1,6 @@
 use crate::client_lib::actions::Actions;
-use crate::client_lib::loading::AudioAssets;
 use crate::client_lib::client_state::ClientState;
+use crate::client_lib::loading::AudioAssets;
 use bevy::prelude::*;
 use bevy_kira_audio::{Audio, AudioPlugin};
 

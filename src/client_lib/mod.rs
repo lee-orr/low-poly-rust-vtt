@@ -1,5 +1,6 @@
 mod actions;
 mod audio;
+mod client_state;
 mod connection;
 mod loading;
 mod menu;
@@ -7,7 +8,6 @@ mod player;
 mod room_info;
 mod settings;
 pub mod web_resize;
-mod client_state;
 
 use crate::client_lib::actions::ActionsPlugin;
 use crate::client_lib::audio::InternalAudioPlugin;

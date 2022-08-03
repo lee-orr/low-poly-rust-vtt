@@ -12,10 +12,6 @@ impl RoomInfo {
             player: extract_player_name(info),
         })
     }
-
-    pub fn main_channel_name(&self) -> String {
-        format!("main::{}", &self.room_name)
-    }
 }
 
 fn extract_room_name(info: &str) -> Option<String> {
