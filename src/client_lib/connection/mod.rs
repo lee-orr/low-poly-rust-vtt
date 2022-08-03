@@ -1,17 +1,22 @@
 use bevy::prelude::*;
-use naia_bevy_client::Client;
+use naia_bevy_client::{Client, Plugin  as NaiaPlugin, ClientConfig};
 
 use crate::{client_lib::{
     loading::SettingsAssets, room_info::RoomInfo, settings::Settings, client_state::ClientState
-}, shared_lib::protocol::{Protocol, channels::Channels}};
+}, shared_lib::{protocol::{Protocol, channels::Channels, auth::Auth}, shared_config}};
 
 pub struct ConnectionPlugin;
 
 impl Plugin for ConnectionPlugin {
     fn build(&self, app: &mut App) {
-        app.add_system_set(
-            SystemSet::on_enter(ClientState::Playing).with_system(init),
-        );
+        app
+            .add_plugin(NaiaPlugin::<Protocol, Channels>::new(
+                ClientConfig::default(),
+                shared_config(),
+            ))
+            .add_system_set(
+                SystemSet::on_enter(ClientState::Playing).with_system(init),
+            );
     }
 }
 
@@ -20,6 +25,7 @@ fn init(
     settings: Res<Assets<Settings>>,
     room_info: Res<RoomInfo>,
     mut commands: Commands,
+    mut client: Client<Protocol, Channels>
 ) {
     if let Some(settings) = settings.get(settings_asset.settings.clone()) {
         let mut url = 
@@ -38,6 +44,8 @@ fn init(
         let game = room_info.room_name.clone();
 
         info!("Connecting to {} at {} as {}", &game, &url, player);
+        client.auth(Auth::new(&player, &game));
+        client.connect(&url);
     } else {
         error!("Couldn't connect - no settings found");
     }
