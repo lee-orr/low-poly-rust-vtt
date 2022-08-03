@@ -3,7 +3,7 @@
 
 use bevy::{
     log::LogSettings,
-    prelude::{App, ClearColor, Color, Msaa, WindowDescriptor},
+    prelude::{App, ClearColor, Color, Msaa, WindowDescriptor}, DefaultPlugins,
 };
 
 #[cfg(feature = "client")]
@@ -41,6 +41,7 @@ fn main() {
                 title: "Low Poly VTT".to_string(), // ToDo
                 ..Default::default()
             })
+            .add_plugins(DefaultPlugins)
             .add_plugin(ClientPlugin);
     }
 
